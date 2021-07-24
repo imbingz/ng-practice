@@ -6,11 +6,11 @@
       <tbody class="text-center" *ngFor="let p of productArr">
       
     
-      <app-nested-product-row  [product]="p" (getPrice)="onGetPrice($event)" ></app-nested-product-row>
+      <tr app-nested-product-row  [product]="p"  ><tr>
     
     </tbody>
   </table>
-  <div [hidden]="isHidden">The totle price is </div>
+  <div>The totle price is </div>
   <!-- </div> -->
   <!-- </div> -->
 </div>

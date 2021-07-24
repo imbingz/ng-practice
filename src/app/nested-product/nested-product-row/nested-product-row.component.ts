@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
-	selector: 'app-nested-product-row',
+	selector: '[app-nested-product-row]',
 	templateUrl: './nested-product-row.component.html',
 	styleUrls: [
 		'./nested-product-row.component.css'
