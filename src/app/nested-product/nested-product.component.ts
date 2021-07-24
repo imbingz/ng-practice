@@ -28,7 +28,7 @@ export class NestedProductComponent implements OnInit {
 			p.price = product.price;
 			p.qty = product.qty;
 		}
-		console.log(this.productArr);
+		// console.log(this.productArr);
 		this.calcTotalPrice();
 	}
 

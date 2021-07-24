@@ -1,7 +1,7 @@
 <div class="container">
     <table class="table-bordered text-center">
       
-      <!-- <tbody class="text-center" *ngFor="let p of productArr"> -->
+      <tbody class="text-center">
       
     
       <tr app-nested-product-row  
@@ -11,8 +11,9 @@
       (deleteEvent) = "delete($event)"
       ><tr>
     
-    <!-- </tbody> -->
+    </tbody>
   </table>
   <div>The totle price is {{totalPrice}} </div>
+  <div class="text-success"   *ngIf="totalPrice > 100000">You are eligible for discount!</div>
 
 </div>

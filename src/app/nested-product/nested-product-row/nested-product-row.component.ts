@@ -26,19 +26,21 @@ export class NestedProductRowComponent implements OnInit, OnChanges {
 	constructor() {}
 
 	onChange(): void {
-		console.log(this.product);
+		// console.log(this.product);
 		this.updateEvent.emit(this.product);
 	}
 
 	onDelete(): void {
-		console.log('onDelete');
+		// console.log('onDelete');
 		this.deleteEvent.emit(this.product.id);
 	}
 
 	ngOnInit(): void {}
 
+	// detect the changes of child component and update parent
+	//the calcTotalprice will show 0 without this update
 	ngOnChanges(changes: SimpleChanges): void {
-		console.log('ngOnChange');
+		// use setTimeout to solve the error from value changes after checking
 		setTimeout(() => {
 			console.log(changes);
 			this.onChange();
