@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+	Component,
+	EventEmitter,
+	Input,
+	OnInit,
+	Output,
+	SimpleChanges,
+	OnChanges
+} from '@angular/core';
+import { Product } from '../product';
 
 @Component({
 	selector: '[app-nested-product-row]',
@@ -7,21 +16,32 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 		'./nested-product-row.component.css'
 	]
 })
-export class NestedProductRowComponent implements OnInit {
-	@Input() product: any;
-	@Output() getPrice: EventEmitter<number> = new EventEmitter();
+export class NestedProductRowComponent implements OnInit, OnChanges {
+	@Input() product: Product = new Product(0, 'na', 0, 0);
+	@Output() updateEvent: EventEmitter<Product> = new EventEmitter();
+	@Output() deleteEvent: EventEmitter<number> = new EventEmitter();
 
-	qty: number = 1;
 	errorMsg: string = 'Please enter a quantity';
-	totalPrice: number = 0;
+
 	constructor() {}
 
-	onChange() {
-		this.totalPrice = this.product.price * this.qty;
-		this.getPrice.emit(this.totalPrice);
+	onChange(): void {
+		console.log(this.product);
+		this.updateEvent.emit(this.product);
 	}
 
-	ngOnInit(): void {
-		console.log(this.product);
+	onDelete(): void {
+		console.log('onDelete');
+		this.deleteEvent.emit(this.product.id);
+	}
+
+	ngOnInit(): void {}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		console.log('ngOnChange');
+		setTimeout(() => {
+			console.log(changes);
+			this.onChange();
+		});
 	}
 }

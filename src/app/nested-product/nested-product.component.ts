@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Product } from './product';
+import { NestedProductService } from './nested-product.service';
 
 @Component({
 	selector: 'app-nested-product',
@@ -10,50 +10,41 @@ import { Product } from './product';
 	]
 })
 export class NestedProductComponent implements OnInit {
-	productArr: Product[] = [
-		{
-			id: 1,
-			name: 'Mobile',
-			price: 10000,
-			Requantity: 1
-		},
-		{
-			id: 2,
-			name: 'Bag',
-			price: 500,
-			Requantity: 1
-		},
-		{
-			id: 3,
-			name: 'Shoe',
-			price: 1000,
-			Requantity: 1
-		},
-		{
-			id: 4,
-			name: 'Groceries',
-			price: 700,
-			Requantity: 1
-		},
-		{
-			id: 5,
-			name: 'Furniture',
-			price: 15000,
-			Requantity: 1
-		},
-		{
-			id: 6,
-			name: 'Laptop',
-			price: 35000,
-			Requantity: 1
-		}
-	];
+	productArr: Product[] = [];
 
-	isHidden: boolean = true;
 	totalPrice: number = 0;
-	constructor() {}
+	error: any;
+	constructor(private service: NestedProductService) {}
 
-	ngOnInit(): void {
+	calcTotalPrice(): void {
+		this.totalPrice = 0;
+		console.log(this.productArr); // ?????? why [] ??????
+		this.productArr.forEach(p => (this.totalPrice += p.price * p.qty));
+	}
+
+	update(product: Product): void {
+		let p = this.productArr.find(p => p.id == product.id);
+		if (p != undefined) {
+			p.price = product.price;
+			p.qty = product.qty;
+		}
 		console.log(this.productArr);
+		this.calcTotalPrice();
+	}
+
+	delete(id: number): void {
+		this.productArr = this.productArr.filter(p => p.id != id);
+		// console.log(this.productArr);
+		this.calcTotalPrice();
+	}
+	ngOnInit(): void {
+		this.service
+			.getProducts()
+			.subscribe(
+				data => (this.productArr = data),
+				err => (this.error = err)
+			);
+
+		this.calcTotalPrice();
 	}
 }

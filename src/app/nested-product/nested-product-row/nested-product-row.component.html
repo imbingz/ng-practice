@@ -1,7 +1,6 @@
-
-  <button> Delete </button>
-  <td class="align-middle">{{product.id}}</td>
-  <td>{{product.name}}</td>
-  <td>{{product.price}}</td>
-  <td><input type="number" [(ngModel)]="qty" (change)="onChange()"></td>
-  <label class="text-danger" *ngIf="qty==0">{{errorMsg}}</label>
+<td><button type="button" (click)="onDelete()">Delete</button></td>
+<td>{{product.id}}</td>
+<td>{{product.name}}</td>
+<td><input type="number" [(ngModel)]="product.price"></td>
+<td><input type="number" [(ngModel)]="product.qty" (change)="onChange()" ></td>
+<label class="text-danger" *ngIf="product.qty<=0">{{errorMsg}}</label>
