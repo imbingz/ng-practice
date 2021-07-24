@@ -1,0 +1,30 @@
+
+
+<div class="container my-5">
+  <h4>Templates - Exercise - 1</h4>
+  <div class="card text-center">
+  <div class="card-header bg-dark"></div>
+  <div class="card-body">
+    <h4 class="card-title text-warning">May I help You?</h4>
+    <h6 class="card-subtitle mb-3">Enter the book name:</h6>
+    <!-- make sure to import FormsModel in app.component.ts when using two-way data binding-->
+    <input type="text" class="form-control border-info" [(ngModel)] = "searchName">
+    <p class="text-warning h5 my-4" [hidden]="searchName.length > 0 ? !isHidden : isHidden">You are searching for: {{searchName}}</p> 
+  </div>
+  <div class="card-footer bg-dark"></div>
+</div>
+
+
+<div class="container my-5">
+  <h4>Templates - Exercise - 2</h4>
+  <div class="card text-center bg-light border-0">
+    <div class="card-body">
+      <h5 class="card-title text-warning">When was I born?</h5>
+      <h6 class="card-text">Enter your Age:</h6>
+      <input type="number" class="form-control mb-3" [(ngModel)] = "age">
+      <button type="button" class="btn btn-outline-warning" (click)="checkAge()">Show Birth Year</button>
+      <p class="card-text text-warning mt-3 mb-0" [hidden]="isHidden">You were born in {{year}}. </p>
+      <p class="card-text text-warning mt-0">{{ message}}</p>
+    </div>
+  </div>
+</div>

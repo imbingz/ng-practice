@@ -1,0 +1,24 @@
+<div class="container">
+
+<h2> Sorting Products list using custom pipe </h2>
+Sort the list based on
+<select [(ngModel)]="sortoption">
+        <option value="prodName">Product Name</option>
+        <option value="price">Price</option>        
+      </select><br/><br/>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let products of productsList ">
+            <td>{{products.productName}}</td>
+            <td>{{products.price}}</td>
+        </tr>
+    </tbody>
+</table>
+
+</div>

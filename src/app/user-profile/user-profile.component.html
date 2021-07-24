@@ -1,0 +1,48 @@
+<nav class="navbar navbar-dark bg-dark justify-content-center">
+    <h2 class="text-light ">User Profile</h2>
+</nav>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-4 col-sm-12">
+      <img src="../../assets/userprofile.jpg" alt="profile pic" class="img-thumbnail">
+    </div>
+    <div class="col-md-8 col-sm-12">
+      <!-- <form action="#"> -->
+        <div class="table-responsive">
+          <div class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>Name:</td>
+                <td>{{userData.userName}}</td>
+              </tr>
+              <tr>
+                <td>Email Id: </td>
+                <td>{{userData.emailId}}</td>
+              </tr>
+              <tr>
+                <td>Contact Number: </td>
+                <td>{{userData.contactNo}}</td>
+              </tr>
+              <tr>
+                <td>Height</td>
+                <td>{{userData.height}}</td>
+              </tr>
+              <tr>
+                <td>Weight</td>
+                <td>{{userData.weight}}</td>
+              </tr>
+              <tr>
+                <td>Qualification: </td>
+                <td>{{userData.education}}</td>
+              </tr>
+              <tr>
+                <td>Address: </td>
+                <td>{{userData.address}}</td>
+              </tr>
+            </tbody>
+          </div>
+        </div>
+     <!-- </form> -->
+    </div>
+  </div>
+</div>
